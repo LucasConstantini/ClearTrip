@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Lucas/Desktop/PFC/ClearTrip/cleartrip/src/java/cleartrip/controller/action/empresa/EmpresaUpdateAction.java</file>
+            <file>file:/C:/Users/Lucas/Desktop/PFC/ClearTrip/cleartrip/src/java/cleartrip/controller/action/categoriadespesa/CategoriaDespesaUpdateAction.java</file>
+            <file>file:/C:/Users/Lucas/Desktop/PFC/ClearTrip/cleartrip/src/java/cleartrip/controller/action/categoriadespesa/CategoriaDespesaCreateAction.java</file>
+            <file>file:/C:/Users/Lucas/Desktop/PFC/ClearTrip/cleartrip/src/java/cleartrip/controller/action/categoriadespesa/CategoriaDespesaShowFormAction.java</file>
+            <file>file:/C:/Users/Lucas/Desktop/PFC/ClearTrip/cleartrip/src/java/cleartrip/controller/action/empresa/EmpresaDeleteAction.java</file>
+            <file>file:/C:/Users/Lucas/Desktop/PFC/ClearTrip/cleartrip/src/java/cleartrip/controller/action/empresa/EmpresaCreateAction.java</file>
+            <file>file:/C:/Users/Lucas/Desktop/PFC/ClearTrip/cleartrip/src/java/cleartrip/controller/action/empresa/EmpresaShowFormAction.java</file>
+            <file>file:/C:/Users/Lucas/Desktop/PFC/ClearTrip/cleartrip/src/java/cleartrip/controller/action/categoriadespesa/CategoriaDespesaDeleteAction.java</file>
+            <file>file:/C:/Users/Lucas/Desktop/PFC/ClearTrip/cleartrip/src/java/cleartrip/controller/action/empresa/EmpresaReadAction.java</file>
+            <file>file:/C:/Users/Lucas/Desktop/PFC/ClearTrip/cleartrip/src/java/cleartrip/controller/action/categoriadespesa/CategoriaDespesaReadAction.java</file>
+        </group>
     </open-files>
 </project-private>
