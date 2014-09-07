@@ -54,7 +54,7 @@ login character varying(50) NOT NULL,
   CONSTRAINT cpf_unique UNIQUE (cpf),
   CONSTRAINT rg_unique UNIQUE (rg),
   CONSTRAINT idusuario_primary_key PRIMARY KEY (id),
-  CONSTRAINT empresa_id_foreign_key FOREIGN KEY (empresa_id)
+  CONSTRAINT empresa_id_foreign_key FOREIGN KEY (empresa_fk)
       REFERENCES empresa (id) ON UPDATE CASCADE ON DELETE RESTRICT
 )
 WITH (
@@ -72,7 +72,7 @@ datainicio date NOT NULL,
 margemdeslocamento integer NOT NULL, 
 custokm numeric(10,2) NOT NULL, 
    CONSTRAINT idparametros_primary_key PRIMARY KEY (id), 
-   CONSTRAINT empresa_id_foreign_key FOREIGN KEY (empresa_id) REFERENCES empresa (id) ON UPDATE CASCADE ON DELETE RESTRICT
+   CONSTRAINT empresa_id_foreign_key FOREIGN KEY (empresa_fk) REFERENCES empresa (id) ON UPDATE CASCADE ON DELETE RESTRICT
 ) 
 WITH (
   OIDS = FALSE
@@ -113,8 +113,8 @@ relatoviagem character varying(6000),
 dataaprovacao date NOT NULL,
 dataencerramento date,
    CONSTRAINT idviagem_primary_key PRIMARY KEY (id), 
-   CONSTRAINT usuario_id_foreign_key FOREIGN KEY (usuario_id) REFERENCES usuario (id) ON UPDATE CASCADE ON DELETE RESTRICT, 
-   CONSTRAINT meio_transporte_id_foreign_key FOREIGN KEY (meio_transporte_id) REFERENCES meio_transporte (id) ON UPDATE CASCADE ON DELETE RESTRICT
+   CONSTRAINT usuario_id_foreign_key FOREIGN KEY (usuario_fk) REFERENCES usuario (id) ON UPDATE CASCADE ON DELETE RESTRICT, 
+   CONSTRAINT meio_transporte_id_foreign_key FOREIGN KEY (meio_transporte_fk) REFERENCES meio_transporte (id) ON UPDATE CASCADE ON DELETE RESTRICT
 ) 
 WITH (
   OIDS = FALSE
@@ -134,8 +134,8 @@ cnpj bigint,
 descritivo character varying(255), 
 valorrealautorizado numeric(10,2) NOT NULL, 
    CONSTRAINT iddespesas_primary_key PRIMARY KEY (id), 
-   CONSTRAINT categoria_despesa_id_foreign_key FOREIGN KEY (categoria_despesa_id) REFERENCES categoria_despesa (id) ON UPDATE CASCADE ON DELETE RESTRICT, 
-   CONSTRAINT viagem_id_foreign_key FOREIGN KEY (viagem_id) REFERENCES viagem (id) ON UPDATE CASCADE ON DELETE RESTRICT
+   CONSTRAINT categoria_despesa_id_foreign_key FOREIGN KEY (categoria_despesa_fk) REFERENCES categoria_despesa (id) ON UPDATE CASCADE ON DELETE RESTRICT, 
+   CONSTRAINT viagem_id_foreign_key FOREIGN KEY (viagem_fk) REFERENCES viagem (id) ON UPDATE CASCADE ON DELETE RESTRICT
 ) 
 WITH (
   OIDS = FALSE
