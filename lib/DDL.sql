@@ -1,6 +1,6 @@
-﻿CREATE TABLE empresa
+CREATE TABLE empresa
 (
-id smallint NOT NULL,
+id smallserial NOT NULL,
 nome character varying(255) NOT NULL,
 endereco character varying(255) NOT NULL,
 telefone character varying(15) NOT NULL,
@@ -18,7 +18,7 @@ WITH (
 
 CREATE TABLE categoria_despesa
 (
-id bigserial NOT NULL,
+id smallserial NOT NULL,
 nome character varying(255) NOT NULL,
 valorlimite numeric(10,2),
   CONSTRAINT idcategoriadespesa_primary_key PRIMARY KEY (id)
@@ -29,7 +29,7 @@ WITH (
 
 CREATE TABLE meio_transporte
 (
-id bigserial NOT NULL, 
+id smallserial NOT NULL, 
 nome character varying(255) NOT NULL, 
    CONSTRAINT idmeiotransporte_primary_key PRIMARY KEY (id)
 ) 
@@ -39,15 +39,15 @@ WITH (
 
 CREATE TABLE usuario
 (
-id smallint NOT NULL,
-empresa_id smallint NOT NULL,
+id smallserial NOT NULL,
+empresa_fk smallint NOT NULL,
 nome character varying(255) NOT NULL,
 senha character varying(50) NOT NULL,
 cpf bigint NOT NULL,
 rg character varying(20) NOT NULL,
 tipo smallint NOT NULL,
 emailpessoal character varying(255),
-emailcorporativo character varying(255),
+emailcorporativo character varying(255)NOT NULL,
 telefonepessoal character varying(15),
 telefonecorporativo character varying(15),
 login character varying(50) NOT NULL,
@@ -62,8 +62,8 @@ WITH (
 );
 CREATE TABLE parametros
 (
-id integer NOT NULL, 
-empresa_id smallint NOT NULL, 
+id smallserial NOT NULL, 
+empresa_fk smallint NOT NULL, 
 manha time(6) with time zone NOT NULL, 
 tarde time(6) with time zone NOT NULL, 
 noite time(6) with time zone NOT NULL, 
@@ -80,9 +80,9 @@ WITH (
 
 CREATE TABLE viagem
 (
-id integer NOT NULL, 
-usuario_id smallint NOT NULL, 
-meio_transporte_id integer NOT NULL, 
+id smallserial NOT NULL, 
+usuario_fk smallint NOT NULL, 
+meio_transporte_fk smallint NOT NULL, 
 status character varying(1) NOT NULL, 
 destino character varying(255) NOT NULL, 
 motivo character varying(3000), 
@@ -122,9 +122,9 @@ WITH (
 
 CREATE TABLE despesa
 (
-id integer NOT NULL, 
-viagem_id integer NOT NULL, 
-categoria_despesa_id integer NOT NULL, 
+id smallserial NOT NULL, 
+viagem_fk smallint NOT NULL, 
+categoria_despesa_fk smallint NOT NULL, 
 comprovante bit varying(20000000) NOT NULL, 
 valor numeric(10,2) NOT NULL, 
 nomeestabelecimento character varying(255), 
