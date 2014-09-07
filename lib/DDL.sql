@@ -147,4 +147,4 @@ VALUES
 INSERT INTO usuario
 (empresa_fk, nome, senha, cpf, rg, tipo, emailpessoal, emailcorporativo, telefonepessoal, telefonecorporativo, login) 
 VALUES 
-(1, 'Lucas', '123456', 10046384693, 'MG 12.515.669', 1, 'lucas@lucas.com', 'lucasb@univas.edu.br', '88581994', '34499206', 'lucas@lucas.com');
+(1, 'Lucas', '123456', 10046384693, 'MG 12.515.669', 'Administrador', 'lucas@lucas.com', 'lucasb@univas.edu.br', '88581994', '34499206', 'lucas@lucas.com');
