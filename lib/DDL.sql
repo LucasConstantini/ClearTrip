@@ -140,3 +140,11 @@ valorrealautorizado numeric(10,2) NOT NULL,
 WITH (
   OIDS = FALSE
 );
+INSERT INTO empresa
+(nome, endereco, telefone, nomefantasia, nomerepresentante, cnpj, cpfrepresentante)
+VALUES 
+('Casa A', 'PQP', '34252324', 'Casa A', 'Fabio', 749182374918, 10020303004);
+INSERT INTO usuario
+(empresa_fk, nome, senha, cpf, rg, tipo, emailpessoal, emailcorporativo, telefonepessoal, telefonecorporativo, login) 
+VALUES 
+(1, 'Lucas', '123456', 10046384693, 'MG 12.515.669', 1, 'lucas@lucas.com', 'lucasb@univas.edu.br', '88581994', '34499206', 'lucas@lucas.com');
