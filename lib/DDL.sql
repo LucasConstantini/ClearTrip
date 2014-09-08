@@ -45,7 +45,7 @@ nome character varying(255) NOT NULL,
 senha character varying(50) NOT NULL,
 cpf bigint NOT NULL,
 rg character varying(20) NOT NULL,
-tipo smallint NOT NULL,
+tipo character varying(15) NOT NULL,
 emailpessoal character varying(255),
 emailcorporativo character varying(255)NOT NULL,
 telefonepessoal character varying(15),
@@ -140,3 +140,11 @@ valorrealautorizado numeric(10,2) NOT NULL,
 WITH (
   OIDS = FALSE
 );
+INSERT INTO empresa
+(nome, endereco, telefone, nomefantasia, nomerepresentante, cnpj, cpfrepresentante)
+VALUES 
+('Casa A', 'PQP', '34252324', 'Casa A', 'Fabio', 749182374918, 10020303004);
+INSERT INTO usuario
+(empresa_fk, nome, senha, cpf, rg, tipo, emailpessoal, emailcorporativo, telefonepessoal, telefonecorporativo, login) 
+VALUES 
+(1, 'Lucas', '123456', 10046384693, 'MG 12.515.669', 'Administrador', 'lucas@lucas.com', 'lucasb@univas.edu.br', '88581994', '34499206', 'lucas@lucas.com');
