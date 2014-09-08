@@ -15,7 +15,7 @@
         </style>
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <title>Acadêmico</title>     
+        <title>Clear Trip</title>     
     </head>
     <body>
         <div class="container">
