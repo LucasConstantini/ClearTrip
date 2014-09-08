@@ -15,7 +15,7 @@ public class UsuarioService implements BaseUsuarioService {
 
     //login
     @Override
-    public Usuario login(Long usuario, String senha) {
+    public Usuario login(String usuario, String senha) {
         Usuario usuarioLogado = null;
         try {
             Connection conn = ConnectionManager.getInstance().getConnection();
@@ -24,7 +24,9 @@ public class UsuarioService implements BaseUsuarioService {
             criteria.put(UsuarioDAO.CRITERION_USUARIO_EQ, usuario);
             criteria.put(UsuarioDAO.CRITERION_SENHA_EQ, senha);
             List<Usuario> usuarios = dao.readByCriteria(criteria, conn);
+            
             if (usuarios != null && usuarios.size() == 1) {
+                System.out.println("cheguei aqui");
                 usuarioLogado = usuarios.get(0);
                 if (!usuarioLogado.getLogin().equals(usuario)) {
                     usuarioLogado = null;
@@ -34,6 +36,7 @@ public class UsuarioService implements BaseUsuarioService {
                     }
                 }
             }
+            
             conn.close();
         } catch (Exception e) {
         }

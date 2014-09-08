@@ -32,7 +32,7 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
         ps.setString(++i, e.getTipo());
-        ps.setLong(++i, e.getLogin());
+        ps.setString(++i, e.getLogin());
         ps.setString(++i, e.getSenha());
         ps.setString(++i, e.getNome());
         ps.setString(++i, e.getCpf());
@@ -78,7 +78,7 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
             }
             
             e.setTipo(rs.getString("tipo"));
-            e.setLogin(rs.getLong("login"));
+            e.setLogin(rs.getString("login"));
             e.setSenha(rs.getString("senha"));
             e.setNome(rs.getString("nome"));
             e.setEmailCorporativo(rs.getString("email_corporativo"));
@@ -101,17 +101,23 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
     @Override
     public List<Usuario> readByCriteria(Map<String, Object> criteria, Connection conn) throws Exception {
         List<Usuario> lista = new ArrayList<Usuario>();
-        String sql = "SELECT usuario.tipo,usuario.login,usuario.senha,usuario.nome,usuario.cpf,usuario.rg,usuario.email_corporativo,usuario.email_pessoal,usuario.telefone_corporativo,usuario.telefone_pessoal, empresa.id as empresa_id, empresa.nome as empresa_nome FROM empresa right join usuario on usuario.empresa_fk = empresa.id WHERE 1=1";
+        String sql = "SELECT usuario.tipo,usuario.login,usuario.senha,usuario.nome,usuario.cpf,usuario.rg,usuario.emailcorporativo,usuario.emailpessoal,usuario.telefonecorporativo,usuario.telefonepessoal, empresa.id as empresa_id, empresa.nome as empresa_nome FROM empresa right join usuario on usuario.empresa_fk = empresa.id WHERE 1=1";
 
         String criterionTipoEq = (String) criteria.get(CRITERION_TIPO_EQ);
         if (criterionTipoEq != null && !criterionTipoEq.trim().isEmpty()) {
-            sql += " AND tipo = '" + criterionTipoEq + "'";
+            sql += " AND usuario.tipo = '" + criterionTipoEq + "'";
         }
 
-        Long criterionUsuarioEq = (Long) criteria.get(CRITERION_USUARIO_EQ);
-        if (criterionUsuarioEq != null && criterionUsuarioEq > 0) {
-            sql += " AND login = " + criterionUsuarioEq;
+        String criterionUsuarioEq = (String) criteria.get(CRITERION_USUARIO_EQ);
+        if (criterionUsuarioEq != null) {
+            sql += " AND usuario.login = '" + criterionUsuarioEq + "'";
         }
+        
+        String criterionSenhaEq = (String) criteria.get(CRITERION_SENHA_EQ);
+        if (criterionSenhaEq != null) {
+            sql += " AND usuario.senha = '" + criterionSenhaEq + "'";
+        }
+        
 
         //Pesquisa por nome do usuário
         String criterionNomeILike = (String) criteria.get(CRITERION_NOME_I_LIKE);
@@ -135,15 +141,15 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
             }
 
             e.setTipo(rs.getString("tipo"));
-            e.setLogin(rs.getLong("login"));
+            e.setLogin(rs.getString("login"));
             e.setSenha(rs.getString("senha"));
             e.setNome(rs.getString("nome"));
-            e.setEmailCorporativo(rs.getString("email_corporativo"));
-            e.setEmailPessoal(rs.getString("email_pessoal"));
-            e.setTelefoneCorporativo(rs.getString("telefone_corporativo"));
-            e.setTelefonePessoal(rs.getString("telefone_pessoal"));
+            e.setEmailCorporativo(rs.getString("emailcorporativo"));
+            e.setEmailPessoal(rs.getString("emailpessoal"));
+            e.setTelefoneCorporativo(rs.getString("telefonecorporativo"));
+            e.setTelefonePessoal(rs.getString("telefonepessoal"));
             
-            //curso
+            //Empresa
             Empresa empresa = new Empresa();
             empresa.setId(rs.getLong("empresa_id"));
             empresa.setNome(rs.getString("empresa_nome"));
@@ -153,6 +159,7 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         }
         rs.close();
         s.close();
+        
         return lista;
     }
 
@@ -181,7 +188,7 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         }
         ps.setLong(++i, e.getEmpresa().getId());
         
-        ps.setLong(++i, e.getLogin());
+        ps.setString(++i, e.getLogin());
         ps.execute();
         ps.close();
     }

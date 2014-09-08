@@ -4,7 +4,7 @@ import cleartrip.model.base.BasePOJO;
 
 public class Usuario extends BasePOJO {
 
-    private Long login;
+    private String login;
     private String senha;
     private String nome;
     private Empresa empresa;
@@ -16,11 +16,11 @@ public class Usuario extends BasePOJO {
     private String rg;
     private String cpf;
 
-    public Long getLogin() {
+    public String getLogin() {
         return login;
     }
 
-    public void setLogin(Long login) {
+    public void setLogin(String login) {
         this.login = login;
     }
 
