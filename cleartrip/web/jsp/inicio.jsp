@@ -1,7 +1,7 @@
 <%-- 
-    Document   : index
-    Created on : 22/06/2014, 21:48:12
-    Author     : Familia
+    Document   : inicio
+    Created on : 07/09/2014, 19:39:56
+    Author     : Lucas
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,10 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Inicio de Teste</title>
     </head>
     <body>
-        <h1>Funcionei!</h1>
-        
+        <h1>Início Page</h1>
     </body>
 </html>

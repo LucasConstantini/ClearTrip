@@ -1,0 +1,37 @@
+.fundoLogin{
+    background-image:  url(../img/loginFundo.png);
+    background-repeat: no-repeat;
+    background-color:  white;
+    border-color: #DEDEBA;
+/*    margin-top: 40px;
+    height: 333px;
+    background-color: #DEDEBA;*/
+}
+.fundoUsuario{
+    background-image:  url(../img/usuario.png);
+    background-repeat: no-repeat;
+    background-color:  #DEDEBA;
+    border-color: #DEDEBA;
+}
+.formatacao{
+/*    margin-left: 73px;*/
+   margin-left: 73px;
+
+
+}
+.botao{
+    margin-left: 61%;
+    margin-top: -25px 
+}
+.fundoCorpo{
+    background-color: #DEDEBA;
+    border-bottom-color: #DEDEBA;
+}
+.divisoria1{
+    margin-top: 40px;
+}
+.divisoria2{
+    margin-top: 40px;height: 333px;
+}
+
+
