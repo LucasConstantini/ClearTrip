@@ -45,7 +45,6 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         } else {
             ps.setNull(++i, Types.VARCHAR);
         }
-        //para campos não obrigatórios 
         if (e.getTelefonePessoal()!= null) {
             ps.setString(++i, e.getTelefonePessoal());
         } else {
@@ -180,7 +179,6 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         } else {
             ps.setNull(++i, Types.VARCHAR);
         }
-        //para campos não obrigatórios 
         if (e.getTelefonePessoal()!= null) {
             ps.setString(++i, e.getTelefonePessoal());
         } else {

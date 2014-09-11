@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,12 @@ public class CategoriaDespesaDAO implements BaseDAO<CategoriaDespesa> {
         int i = 0;
         //campo obrigatório
         ps.setString(++i, e.getNome());
-        ps.setInt(++i, e.getValorLimite());
+        //campo não obrigatórios
+        if (e.getValorLimite() != 0) {
+            ps.setInt(++i, e.getValorLimite());
+        } else {
+            ps.setNull(++i, Types.INTEGER);
+        }
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             e.setId(rs.getLong("id"));
@@ -47,7 +53,7 @@ public class CategoriaDespesaDAO implements BaseDAO<CategoriaDespesa> {
             categoriaDespesa.setId(rs.getLong("id"));
             categoriaDespesa.setNome(rs.getString("nome"));
             categoriaDespesa.setValorLimite(rs.getInt("valor_limite"));
-            
+
         }
         rs.close();
         ps.close();
@@ -64,11 +70,11 @@ public class CategoriaDespesaDAO implements BaseDAO<CategoriaDespesa> {
         if (criterionNome != null && !criterionNome.trim().isEmpty()) {
             sql += " AND categoria_despesa.nome ILIKE '%" + criterionNome + "%'";
         }
-        
+
         //criterio por intervalo de valores
         int criterionValorLimite1 = (int) criteria.get(CRITEERION_VALOR_LIMITE_1);
         int criterionValorLimite2 = (int) criteria.get(CRITEERION_VALOR_LIMITE_2);
-        if(criterionValorLimite2 != 0){
+        if (criterionValorLimite2 != 0) {
             sql += " AND categoria_despesa.valor_limite between " + criterionValorLimite1 + " and " + criterionValorLimite2;
         }
 
@@ -80,7 +86,7 @@ public class CategoriaDespesaDAO implements BaseDAO<CategoriaDespesa> {
             categoriaDespesa.setId(rs.getLong("id"));
             categoriaDespesa.setNome(rs.getString("nome"));
             categoriaDespesa.setValorLimite(rs.getInt("valor_limite"));
-        
+
             lista.add(categoriaDespesa);
         }
         rs.close();
@@ -96,7 +102,11 @@ public class CategoriaDespesaDAO implements BaseDAO<CategoriaDespesa> {
 
         //setar os campos obrigatórios
         ps.setString(++i, e.getNome());
-        ps.setInt(++i, e.getValorLimite());
+        if (e.getValorLimite() != 0) {
+            ps.setInt(++i, e.getValorLimite());
+        } else {
+            ps.setNull(++i, Types.INTEGER);
+        }
         ps.setLong(++i, e.getId());
         ps.execute();
         ps.close();

@@ -7,6 +7,7 @@ import cleartrip.model.pojo.Despesa;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,12 +24,24 @@ public class DespesaDAO implements BaseDAO<Despesa> {
         ps.setLong(++i, e.getViagem().getId());
         ps.setLong(++i, e.getCategoriaDespesa().getId());
         ps.setBytes(++i, e.getComprovante());
-        ps.setDouble(++i, e.getValor());
+        if(e.getNomeEstabelecimento() != null){
+            ps.setDouble(++i, e.getValor());
+        }else{
+            ps.setNull(++i, Types.VARCHAR);
+        }
         ps.setString(++i, e.getNomeEstabelecimento());
         ps.setDate(++i, e.getDataCompra());
         ps.setTime(++i, e.getHoraCompra());
-        ps.setLong(++i, e.getCnpj());
-        ps.setString(++i, e.getDescritivo());
+        if(e.getCnpj() != 0){
+            ps.setLong(++i, e.getCnpj());
+        }else{
+            ps.setNull(++i, Types.BIGINT);
+        }
+        if(e.getDescritivo()!= null){
+            ps.setString(++i, e.getDescritivo());
+        }else{
+            ps.setNull(++i, Types.VARCHAR);
+        }
         ps.setLong(++i, e.getValorRealAutorizado());
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
@@ -91,12 +104,23 @@ public class DespesaDAO implements BaseDAO<Despesa> {
         ps.setLong(++i, e.getCategoriaDespesa().getId());
         ps.setBytes(++i, e.getComprovante());
         ps.setDouble(++i, e.getValor());
-        ps.setString(++i, e.getNomeEstabelecimento());
+        if(e.getNomeEstabelecimento() != null){
+            ps.setDouble(++i, e.getValor());
+        }else{
+            ps.setNull(++i, Types.VARCHAR);
+        }
         ps.setDate(++i, e.getDataCompra());
         ps.setTime(++i, e.getHoraCompra());
-        ps.setLong(++i, e.getCnpj());
-        ps.setString(++i, e.getDescritivo());
-        ps.setLong(++i, e.getValorRealAutorizado());
+       if(e.getCnpj() != 0){
+            ps.setLong(++i, e.getCnpj());
+        }else{
+            ps.setNull(++i, Types.BIGINT);
+        }
+        if(e.getDescritivo()!= null){
+            ps.setString(++i, e.getDescritivo());
+        }else{
+            ps.setNull(++i, Types.VARCHAR);
+        }        ps.setLong(++i, e.getValorRealAutorizado());
         // executando o comando sql
         ps.execute();
         ps.close();
