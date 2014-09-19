@@ -44,6 +44,7 @@ public class AppManager extends ApplicationManager {
         //ADMINISTRADOR
         Group administrador = new Group("Administrador");
         administrador.addPermission("Inicio");
+        administrador.addPermission("Usuario");
         AuthorizationManager.addGroup(administrador);
     }
 
