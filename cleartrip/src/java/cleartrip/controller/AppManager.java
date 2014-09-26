@@ -34,6 +34,7 @@ public class AppManager extends ApplicationManager {
         //FINANCEIRO
         Group financeiro = new Group("Financeiro");
         financeiro.addPermission("Inicio");
+        financeiro.addPermission("MTransporte");
         AuthorizationManager.addGroup(financeiro);
 
         //SOLICITANTE
